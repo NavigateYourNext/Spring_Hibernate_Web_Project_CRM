@@ -75,5 +75,16 @@ public class CustomerController
 	}
 	
 	
+	@GetMapping("/search")
+	public String searchCustomer(@RequestParam("theSearchName") String searchName, Model theModel)
+	{
+		List<Customer> theCustomer = customerService.getCustomerByName(searchName);
+		
+		theModel.addAttribute("customer",theCustomer);
+		
+		return "list-customers";
+	}
+	
+	
 	
 }
